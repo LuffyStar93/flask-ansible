@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 #SSH KEY
-Max-FlaskAnsible_key.pem
+Maxime_ansible.pem
 
 #Hosts ansible
 .hosts

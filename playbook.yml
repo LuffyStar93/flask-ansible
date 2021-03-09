@@ -1,7 +1,7 @@
 ---
 - name: Intro Ansible
   hosts: VMAzure
-  remote_user: root
+  remote_user: maxime
   become: yes
   become_method: sudo
 
@@ -10,20 +10,43 @@
       apt: 
         name: git 
         update_cache: yes
+        state: latest
 
     - name: installation de postgres
       apt: 
         name: postgresql
         update_cache: yes
+        state: latest
+    
+    - name: installation de pip
+      apt:
+        name: python-pip
+        state: latest
 
-    - name: Installation des packages python
+    - name: installation de pip3
+      apt:
+        name: python3-pip
+        state: latest
+
+    - name: Installation des packages python sur pip2
       pip:
         name: 
           - psycopg2-binary
           - Flask
 
+    - name: Installation des packages python sur pip3
+      pip:
+        name: 
+          - psycopg2-binary
+          - Flask
+        executable: pip3
+    
+    # - name: Modify user postgres
+    #   shell: | 
+    #     su - postgres
+    #     psql -c "alter user postgres with password 'StrongAdminP@ssw0rd'"
+
     - name: Clone a repo git
-      ansible.builtin.git:
-      repo: https://github.com/LuffyStar93/flask-ansible.git
-      dest: ~/app
-      clone: yes
+      git:
+        repo: https://github.com/LuffyStar93/flask-ansible.git
+        dest: /home/maxime/app
