@@ -1,0 +1,29 @@
+---
+- name: Intro Ansible
+  hosts: VMAzure
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Installation de git
+      apt: 
+        name: git 
+        update_cache: yes
+
+    - name: installation de postgres
+      apt: 
+        name: postgresql
+        update_cache: yes
+
+    - name: Installation des packages python
+      pip:
+        name: 
+          - psycopg2-binary
+          - Flask
+
+    - name: Clone a repo git
+      ansible.builtin.git:
+      repo: https://github.com/LuffyStar93/flask-ansible.git
+      dest: ~/app
+      clone: yes

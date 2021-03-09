@@ -130,3 +130,6 @@ dmypy.json
 
 #SSH KEY
 Max-FlaskAnsible_key.pem
+
+#Hosts ansible
+.hosts
