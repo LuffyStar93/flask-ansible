@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#SSH KEY
+Max-FlaskAnsible_key.pem
