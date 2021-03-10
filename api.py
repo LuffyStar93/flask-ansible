@@ -1,6 +1,7 @@
 from flask import *
 from db import *
 
+cur.execute("INSERT INTO mytable (ID) VALUES (1) ")
 
 app = Flask(__name__)
 
