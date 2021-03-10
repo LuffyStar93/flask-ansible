@@ -41,10 +41,14 @@
           - Flask
         executable: pip3
     
-    # - name: Modify user postgres
-    #   shell: | 
-    #     su - postgres
-    #     psql -c "alter user postgres with password 'StrongAdminP@ssw0rd'"
+    - name: pd reset database user
+      become: yes
+      become_method: sudo
+      become_user: postgres
+      postgresql_user: 
+        db: postgres
+        name: postgres
+        password: "123" 
 
     - name: Clone a repo git
       git:
